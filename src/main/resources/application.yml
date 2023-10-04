@@ -3,6 +3,7 @@ server:
   error:
     include-message: always
     include-binding-errors: always
+
 spring:
   datasource:
     username: jodosSpringboot
@@ -14,6 +15,9 @@ spring:
       ddl-auto: create-drop
     properties:
       hibernate:
-        dialect :org.hibernate.dialect.MySQL8Dialect
-        format-sql:true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        format_sql: true
     show-sql: true
+
+security:
+  filter-chain-bean: securityFilterChain

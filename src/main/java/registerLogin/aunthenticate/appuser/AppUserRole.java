@@ -1,6 +1,6 @@
 package registerLogin.aunthenticate.appuser;
 
- public  enum AppUserRole {
-USER ,
-     ADMIN
- }
+public enum AppUserRole {
+    USER,
+    ADMIN
+}
