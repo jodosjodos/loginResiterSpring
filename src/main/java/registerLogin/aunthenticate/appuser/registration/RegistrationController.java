@@ -19,4 +19,3 @@ public class RegistrationController {
         return ResponseEntity.ok(registrationService.register(request));
     }
 }
-1
