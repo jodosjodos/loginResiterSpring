@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import registerLogin.aunthenticate.appuser.registration.token.ConfirmationToken;
 import registerLogin.aunthenticate.appuser.registration.token.ConfirmationTokenService;
+import registerLogin.aunthenticate.errors.EmailAlreadyExist;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -33,12 +34,12 @@ public class AppUserService implements UserDetailsService {
                 );
     }
 
-    public String signUpUser(AppUser appUser) {
+    public String signUpUser(AppUser appUser) throws EmailAlreadyExist {
 
         boolean userExist = appUserRepository
                 .findByEmail(appUser.getUsername())
                 .isPresent();
-        if (userExist) return " user already exits ";
+        if (userExist) throw  new EmailAlreadyExist();
         String encodedPassword = bCryptPasswordEncoder
                 .encode(appUser.getPassword());
         appUser.setPassword(encodedPassword);
